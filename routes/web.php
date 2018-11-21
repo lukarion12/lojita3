@@ -62,3 +62,4 @@ Route::get('/pedido-produto', function(){
     }
 });
 
+//terminar de colocar as imagens

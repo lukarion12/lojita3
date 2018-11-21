@@ -62,16 +62,3 @@ Route::get('/pedido-produto', function(){
     }
 });
 
-Route::get('/pedido-produto', function(){
-    $pedidos = Pedido::with('produtos')->get();
-    foreach($pedidos as $ped){
-        echo "ID: " . $ped->id . "<br>";
-        echo "Cliente: " . $ped->cliente->nome . "<br>";
-        $produtos = $ped->produtos;
-        foreach($produtos as $prod){
-            echo "Produto:" . $prod->nome  . 
-           " | Quantidade: " . $prod->pivot->quantidade . "<br>";
-        }
-        echo "<br>";
-    }
-});

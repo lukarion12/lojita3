@@ -28,6 +28,7 @@ Route::post('/categorias/editar/{id}', 'CategoriaController@update');
 Route::post('/categorias', 'CategoriaController@store');
 Route::get('/categorias/restaurar', 'CategoriaController@indexWithTrashed');
 Route::get('/categorias/restaurar/{id}', 'CategoriaController@restore');
+
 ///
 
 Route::get('/produtos', 'ProdutoController@index');
@@ -46,6 +47,20 @@ Route::get('/clientes/apagar/{id}', 'ClienteController@destroy');
 Route::post('/clientes','ClienteController@store');
 Route::post('/clientes/editar/{id}', 'ClienteController@update');
 ///
+
+Route::get('/pedido-produto', function(){
+    $pedidos = Pedido::with('produtos')->get();
+    foreach($pedidos as $ped){
+        echo "ID: " . $ped->id . "<br>";
+        echo "Cliente: " . $ped->cliente->nome . "<br>";
+        $produtos = $ped->produtos;
+        foreach($produtos as $prod){
+            echo "Produto:" . $prod->nome  . 
+           " | Quantidade: " . $prod->pivot->quantidade . "<br>";
+        }
+        echo "<br>";
+    }
+});
 
 Route::get('/pedido-produto', function(){
     $pedidos = Pedido::with('produtos')->get();

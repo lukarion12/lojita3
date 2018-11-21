@@ -36,6 +36,7 @@ Route::get('/produtos/editar/{id}', 'ProdutoController@edit');
 Route::get('/produtos/apagar/{id}', 'ProdutoController@destroy');
 Route::post('/produtos', 'ProdutoController@store');
 Route::post('/produtos/editar/{id}','ProdutoController@update');
+////////////////////////////////
 ///
 
 Route::get('/clientes', 'ClienteController@index');
